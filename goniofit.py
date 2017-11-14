@@ -80,7 +80,7 @@ del sx, sy
 # Now to do some fitting...
 # First, let's define our Gaussian
 def f(x, a, c, w, b):
-    return a*np.exp(-((x - c)/w)**2) + b
+    return a*np.exp(-(((x - c)/w)**2)/2) + b
 
 # Input checking while loop
 flag = False
@@ -138,7 +138,7 @@ print('{:^44}'.format('Fit Parameters'))
 print('{:^14} {:^30}'.format('RMSE', rmse(y, f(x, p[0], p[1], p[2], p[3]), low, high)))
 print('{:^14} {:^30}'.format('Amplitude', p[0]))
 print('{:^14} {:^30}'.format('Center', p[1]))
-print('{:^14} {:^30}'.format('Width', p[2]))
+print('{:^14} {:^30}'.format('Std. Dev.', p[2]))
 print('{:^14} {:^30}'.format('Height', p[3]))
 print('{:^14} {:^30}'.format('Lower Range', x[low]))
 print('{:^14} {:^30}'.format('Upper Range', x[high]))
