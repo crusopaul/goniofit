@@ -134,6 +134,7 @@ def rmse(y, f, low, high):
         ret += (f[i] - y[i])**2
     return np.sqrt(ret/(high + 1 - low))
 
+# Print fit parameters and RMSE
 print('{:^44}'.format('Fit Parameters'))
 print('{:^14} {:^30}'.format('RMSE', rmse(y, f(x, p[0], p[1], p[2], p[3]), low, high)))
 print('{:^14} {:^30}'.format('Amplitude', p[0]))
@@ -143,11 +144,13 @@ print('{:^14} {:^30}'.format('Height', p[3]))
 print('{:^14} {:^30}'.format('Lower Range', x[low]))
 print('{:^14} {:^30}'.format('Upper Range', x[high]))
 
+# Let's prepare for proper graphing
 print("\nA plot of the data is going to be displayed, please note the upper limit of the range that you'd like to include in a final plot.")
 plt.plot(x, y, x, f(x, p[0], p[1], p[2], p[3]))
 plt.show()
-
 top = float(input("What is the upper limit for your range? "))
+
+# Make a proper graph for use elsewhere
 plt.plot(x, y, x, f(x, p[0], p[1], p[2], p[3]))
 plt.legend((str(N) + "-Point Smoothed Data", "Curve Fit"))
 plt.ylabel('Counts')
